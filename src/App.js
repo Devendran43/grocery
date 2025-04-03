@@ -15,7 +15,6 @@ const App = () => {
         snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-          timestamp: doc.data().timestamp?.toDate() || null, // Convert Firestore Timestamp
         }))
       );
     });
