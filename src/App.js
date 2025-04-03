@@ -12,8 +12,9 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "grocery43"), (snapshot) => {
       setProducts(
-        snapshot.docs.map((doc) => ({
+        snapshot.docs.map((doc, index) => ({
           id: doc.id,
+          index: index + 1,
           ...doc.data(),
         }))
       );
@@ -140,6 +141,7 @@ const App = () => {
       <table>
         <thead>
           <tr>
+            <th>S. No.</th>
             <th
               onClick={() =>
                 setSortConfig({
@@ -178,11 +180,13 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedProducts.map(({ id, name, size, status, notes }) => (
+          {sortedProducts.map(({ id, name, size, status, notes, index }) => (
             <tr
               key={id}
               className={status === "picked" ? "green-bg" : status === "not picked" ? "red-bg" : ""}
             >
+              <td>{index}</td>
+
               <td>{name}</td>
               <td>{size}</td>
               <td>
@@ -192,8 +196,9 @@ const App = () => {
                   onChange={(event) => updateStatus(event, id)}
                 />
               </td>
-              <td>
+              <td className="notes-column">
                 <input
+                  className="notes-input"
                   type="text"
                   defaultValue={notes || ""}
                   placeholder="Add notes..."
@@ -212,6 +217,7 @@ const App = () => {
       <div className="add-product-form">
         <h3>Add New Product</h3>
         <input
+          className="product-input"
           type="text"
           placeholder="Product Name"
           value={newProduct.name}

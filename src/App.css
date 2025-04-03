@@ -239,4 +239,52 @@ button:hover {
     font-size: 12px;
     font-weight: bold;
   }
+
+  /* Styling for Product Name and Size Text Boxes */
+  .product-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  /* Fix Notes Column Alignment */
+  .notes-column {
+    width: 25%;
+    min-width: 120px;
+    /* Adjust based on layout needs */
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  /* Ensure input fields in Notes column are properly sized */
+  .notes-input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  /* Adjust table layout for better spacing */
+  table {
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure mobile responsiveness for Notes column */
+  @media (max-width: 600px) {
+    .notes-column {
+      width: auto;
+    }
+  }
+
 }

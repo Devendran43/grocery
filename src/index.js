@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 // import GoogleAuth from './GoogleSheets';
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js")
+    .then(() => console.log("Service Worker Registered"))
+    .catch((error) => console.log("Service Worker Registration Failed", error));
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
